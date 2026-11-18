@@ -1,0 +1,59 @@
+SRI AMBALAVANAR COTTAGE · WEBSITE + ROOM BOOKING
+================================================
+
+FILES TO UPLOAD (all in the same folder, no sub-folders)
+  index.html          main website (16 tourist places, Room booking section)
+  booking.html        booking page: floor plan > details > UPI pay > invoice
+  booking-config.js   rates, rooms, UPI ID, GSTIN, database link  <-- edit here
+  qr.js               makes the UPI QR with the amount filled in
+  supabase-setup.sql  database (run once in Supabase, NOT needed on GitHub but harmless)
+  + all the .jpg / .png images, robots.txt, sitemap.xml
+
+UPLOAD TO GITHUB (repo: metrozoads/ambalavanarcottage)
+  1. Open the repo > Add file > Upload files.
+  2. Drag ALL files from this ZIP (not the folder itself).
+  3. Commit changes. Wait 1-2 minutes, then open
+     https://metrozoads.github.io/ambalavanarcottage/booking.html
+
+RIGHT AFTER UPLOAD = DEMO MODE
+  Booking works fully (floor plan, UPI pay, invoice PDF, WhatsApp share),
+  but the room lock is kept only in the guest's own phone. Two guests could
+  pick the same room. Do the steps below before taking real bookings.
+
+CONNECT THE LIVE DATABASE (free Supabase plan is enough)
+  1. Go to https://supabase.com > Sign in with GitHub > New project
+     Name: ambalavanar-cottage · Region: Mumbai (ap-south-1) · set a DB password.
+  2. Left menu > SQL Editor > New query > paste ALL of supabase-setup.sql > Run.
+     It creates the 23 rooms, rates and the booking/lock functions.
+  3. Left menu > Project Settings > API. Copy:
+        Project URL      (https://xxxx.supabase.co)
+        anon public key  (long text starting with eyJ...)
+  4. Open booking-config.js and paste them:
+        supabaseUrl: "https://xxxx.supabase.co",
+        supabaseKey: "eyJ....",
+  5. Upload booking-config.js again to GitHub. Done:
+     - the floor plan shows real booked / on-hold rooms for everyone,
+     - a room is locked for 10 minutes while a guest pays,
+     - invoice numbers come from the database: SAC/26-27/0001, 0002 ...
+     - every booking is saved in Supabase > Table Editor > bookings
+       (the Admin web app will read the same table).
+  The anon key is safe to put on the website: guests can only call the
+  4 booking functions, they cannot read other guests' details.
+
+CHECKING PAYMENTS (until the Admin app is ready)
+  Plain UPI cannot tell the website that money arrived. The guest types the
+  UTR number after paying. Check it in the bank / GPay business history.
+  In Supabase > Table Editor > bookings, tick utr_verified when it matches.
+  Wrong UTR? set status = cancelled. The guest also has a button to send
+  the booking + UTR to the cottage WhatsApp (+91 90031 97704).
+  For automatic confirmation later: Razorpay / Cashfree payment gateway.
+
+CHANGE RATES OR ROOMS
+  booking-config.js  > types (ac / nonac per night, GST included)
+  supabase-setup.sql > the insert into room_rates line (run again in Supabase)
+  Change BOTH so the website price and the database price match.
+
+TOURIST PLACE PHOTOS
+  New places load their photo from Wikipedia in the guest's browser.
+  To use your own photo: put e.g. thirumanancheri.jpg in the folder and set
+  photo:"thirumanancheri.jpg" for that place in index.html (PLACES list).

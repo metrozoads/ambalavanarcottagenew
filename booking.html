@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Room booking · Sri Ambalavanar Cottage, Mayiladuthurai</title>
+<meta name="description" content="Book your room at Sri Ambalavanar Cottage, Mayiladuthurai. Pick your room on the floor plan, pay by UPI and get your GST invoice at once.">
+<link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" href="logo-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ink:#0F1E2E; --muted:#5B6878; --line:#E6E9EE; --soft:#F5F7F9;
+  --teal:#0F766E; --teal-d:#115E59; --teal-l:#ECF6F5; --navy:#0B1B2B;
+  --wa:#1FA855; --free:#ECFDF5; --free-b:#34D399; --free-i:#065F46;
+  --hold:#FFF7ED; --hold-b:#F59E0B; --hold-i:#9A3412;
+  --font:"Plus Jakarta Sans","Noto Sans Tamil",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;font:16px/1.55 var(--font);color:var(--ink);background:var(--soft);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:var(--teal);text-decoration:none}
+h1,h2,h3{margin:0;letter-spacing:-.02em;line-height:1.2}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #F59E0B;outline-offset:2px;border-radius:6px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:700 15px var(--font);padding:13px 20px;border-radius:12px;text-align:center;white-space:normal}
+.btn svg{width:18px;height:18px;flex:none}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-teal{background:var(--teal);color:#fff}.btn-teal:hover:not(:disabled){background:var(--teal-d)}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-wa{background:var(--wa);color:#fff}.btn-wa:hover{background:#178A45}
+.btn-out{background:#fff;color:var(--ink);border:1px solid #D7DDE4}.btn-out:hover{border-color:var(--teal);color:var(--teal)}
+.btn-big{padding:16px 22px;font-size:17px;font-weight:800;width:100%}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px}
+
+/* header */
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.top .wrap{display:flex;align-items:center;gap:14px;min-height:68px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto;color:var(--ink);min-width:0}
+.brand img{width:44px;height:44px;border-radius:50%;flex:none}
+.brand b{font-size:17px;font-weight:800;line-height:1.2;display:block}
+.brand small{display:block;font-size:12px;color:var(--muted)}
+.lang{display:flex;gap:3px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{border:0;border-radius:999px;padding:7px 12px;min-height:34px;background:transparent;color:var(--muted);font:600 13px var(--font);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.back{font-weight:700;font-size:14px;white-space:nowrap}
+@media (max-width:560px){.back{display:none}.brand small{display:none}.brand b{font-size:15px}}
+
+main{padding-block:22px 64px}
+.steps{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;font-size:14px;font-weight:700}
+.steps li{display:flex;align-items:center;gap:8px;padding:11px 12px;border-radius:12px;background:#fff;color:var(--muted);border:1px solid var(--line);min-width:0}
+.steps li span{width:26px;height:26px;border-radius:50%;background:var(--line);display:grid;place-items:center;flex:none;font-size:13px}
+.steps li em{font-style:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.steps li.done{background:var(--teal-l);color:#0F5F59;border-color:transparent}
+.steps li.done span{background:var(--teal);color:#fff}
+.steps li.now{background:var(--teal);color:#fff;border-color:var(--teal)}
+.steps li.now span{background:#fff;color:var(--teal)}
+@media (max-width:640px){.steps li{justify-content:center;padding:9px 6px}.steps li em{display:none}.steps li.now em{display:inline}.steps{grid-template-columns:auto auto auto auto;justify-content:start}.steps li.now{padding-inline:12px}}
+
+.title{display:flex;flex-direction:column;gap:4px;margin-bottom:16px}
+.title h1{font-size:clamp(24px,3.4vw,32px);font-weight:800}
+html[lang="ta"] .title h1{font-size:clamp(22px,3vw,28px);line-height:1.35}
+.title p{color:var(--muted)}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:20px;align-items:start}
+@media (max-width:960px){.layout{grid-template-columns:minmax(0,1fr)}}
+
+/* dates bar */
+.dates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:12px;margin-bottom:16px;align-items:end}
+.field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--muted);min-width:0}
+.field input,.field select,.field textarea{font:600 16px var(--font);color:var(--ink);padding:11px 12px;border:1px solid #D7DDE4;border-radius:10px;background:#fff;width:100%;min-width:0}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(15,118,110,.18)}
+.nights{font-size:14px;color:var(--muted);font-weight:600;align-self:center}
+.nights b{color:var(--ink);font-size:20px;display:block}
+@media (max-width:520px){.dates{grid-template-columns:repeat(2,minmax(0,1fr))}.nights{grid-column:span 2}}
+
+/* floor plan */
+.floors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+@media (max-width:1100px){.floors{grid-template-columns:minmax(0,1fr)}}
+.floor{padding:16px;display:flex;flex-direction:column;gap:10px}
+.floor-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.floor-h h2{font-size:18px;font-weight:800}
+.floor-h span{font-size:13px;color:var(--muted)}
+.plan{border:3px solid var(--navy);border-radius:10px;padding:10px;background:#F8FAFB;display:flex;flex-direction:column;gap:8px}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr);gap:8px}
+.col{display:flex;flex-direction:column;gap:8px}
+.col-h{font-size:11px;font-weight:700;color:var(--muted);text-align:center;letter-spacing:.08em;height:16px}
+.corr{flex:1;border-left:2px dashed #CBD3DC;border-right:2px dashed #CBD3DC;display:grid;place-items:center;min-height:60px}
+.corr span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:10px;letter-spacing:.3em;color:#8A95A3;font-weight:700}
+.fix{height:64px;border-radius:8px;display:grid;place-items:center;font-size:9.5px;font-weight:700;text-align:center;padding:2px;line-height:1.2}
+.fix.stairs{border:1.5px solid #94A3B8;background:repeating-linear-gradient(0deg,#fff 0 6px,#E2E8F0 6px 8px);color:#475569}
+.fix.rec{background:var(--navy);color:#fff;font-size:8.5px;overflow-wrap:anywhere}
+.door{align-self:center;color:#fff;font-size:12px;font-weight:700;padding:5px 14px;border-radius:0 0 10px 10px;margin-top:-13px}
+.endrow{display:flex;justify-content:center}
+.endrow .room{width:60%}
+.room{height:64px;border-radius:10px;border:2px solid var(--free-b);background:var(--free);color:var(--free-i);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;padding:2px;min-width:0;line-height:1.15}
+.room b{font-size:16px;line-height:1.1}
+.room small{font-size:11px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.room:hover{box-shadow:0 0 0 3px rgba(52,211,153,.35)}
+.room.sel{background:var(--teal);border-color:var(--teal);color:#fff}
+.room.booked{border-style:dashed;border-color:#CBD3DC;background:repeating-linear-gradient(45deg,#EEF1F4 0 8px,#F7F8FA 8px 16px);color:#8A95A3;cursor:not-allowed;box-shadow:none}
+.room.hold{border-color:var(--hold-b);background:var(--hold);color:var(--hold-i);cursor:not-allowed;box-shadow:none}
+.room.loading{opacity:.5}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;font-weight:600;padding:12px 14px;margin-bottom:16px}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:14px;height:14px;border-radius:4px;display:inline-block}
+
+/* side panel */
+.side{display:flex;flex-direction:column;gap:14px;position:sticky;top:86px}
+@media (max-width:960px){.side{position:static}}
+.sum{overflow:hidden}
+.sum>img{width:100%;height:170px;object-fit:cover}
+.sum-b{padding:18px;display:flex;flex-direction:column;gap:10px}
+.sum-b h3{font-size:21px;font-weight:800}
+.row{display:flex;justify-content:space-between;gap:12px;font-size:14px}
+.row span{color:var(--muted)}
+.row.tot{font-size:19px;border-top:2px solid var(--ink);padding-top:10px;margin-top:2px}
+.row.tot span{color:var(--ink);font-weight:700}
+.hr{border-top:1px solid #EEF1F4}
+.seg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;background:#F1F4F7;padding:4px;border-radius:12px}
+.seg button{border:0;border-radius:9px;padding:10px 6px;background:transparent;font:600 14px var(--font);color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12);color:var(--ink);font-weight:800}
+.small{font-size:12.5px;color:var(--muted)}
+.empty{padding:22px;text-align:center;color:var(--muted)}
+.empty b{display:block;color:var(--ink);font-size:17px;margin-bottom:4px}
+
+/* banners */
+.lock{display:flex;gap:10px;align-items:center;background:var(--hold);border:1px solid #FDD8A8;color:#7C2D12;border-radius:12px;padding:12px 16px;font-weight:600;margin-bottom:16px}
+.lock svg{width:20px;height:20px;flex:none}
+.lock.over{background:#FEF2F2;border-color:#FECACA;color:#991B1B}
+.msg{border-radius:12px;padding:12px 14px;font-size:14px;font-weight:600}
+.msg.err{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B}
+.msg.ok{background:#ECFDF3;border:1px solid #A7F3D0;color:#14532D}
+
+/* form */
+.form{padding:24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.form .full{grid-column:1/-1}
+.form .field{color:var(--ink);font-size:14px}
+.err{color:#B91C1C;font-size:13px;font-weight:600}
+.steppers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stp{border:1px solid #D7DDE4;border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.stp>b{font-size:14px}
+.stp>small{font-size:12px;color:var(--muted);margin-top:-6px}
+.stp div{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.stp button{width:38px;height:38px;border-radius:10px;border:1px solid #D7DDE4;background:#fff;font:700 18px var(--font);cursor:pointer;flex:none}
+.stp button:disabled{opacity:.35;cursor:not-allowed}
+.stp output{font-size:20px;font-weight:800}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px}
+.check input{margin-top:4px;width:18px;height:18px;flex:none}
+.acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+@media (max-width:640px){.form{grid-template-columns:minmax(0,1fr);padding:18px}.steppers{grid-template-columns:minmax(0,1fr)}.stp{flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap}.stp>small{margin-top:0;width:100%;order:3}}
+
+/* pay */
+.pay{padding:24px;display:flex;flex-direction:column;gap:16px}
+.apps{display:flex;flex-wrap:wrap;gap:6px 10px;justify-content:center;font-size:13px;color:var(--muted)}
+.or{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12.5px;font-weight:700;letter-spacing:.04em;text-align:center}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.qrbox{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.qr{width:220px;height:220px;padding:10px;border:1px solid var(--line);border-radius:14px;background:#fff;flex:none}
+.qr canvas{width:100%;height:100%;image-rendering:pixelated}
+.upi{flex:1 1 220px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.upi-id{background:var(--soft);border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.upi-id b{overflow-wrap:anywhere;font-size:15px}
+.upi-id .btn{padding:8px 12px;font-size:13px}
+.utr{border-top:1px solid #EEF1F4;padding-top:16px;display:flex;flex-direction:column;gap:10px}
+.utr-row{display:flex;flex-wrap:wrap;gap:10px}
+.utr-row input{flex:1 1 220px;font:700 18px var(--font);letter-spacing:.08em;padding:12px;border:1px solid #D7DDE4;border-radius:10px;min-width:0}
+.safe{background:var(--navy);color:#D5DEE8;border-radius:16px;padding:14px 16px;font-size:13px;display:flex;gap:10px;align-items:flex-start}
+.safe svg{width:22px;height:22px;flex:none;color:#5EEAD4}
+@media (max-width:520px){.qr{width:100%;max-width:260px;height:auto;aspect-ratio:1;margin:0 auto}.pay{padding:18px}}
+
+/* done */
+.done-h{padding:24px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-bottom:18px}
+.tick{width:64px;height:64px;border-radius:50%;background:#DCFCE7;display:grid;place-items:center;flex:none}
+.tick svg{width:34px;height:34px}
+.done-t{flex:1 1 320px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.done-t h1{font-size:clamp(22px,3vw,30px);font-weight:800}
+.done-acts{display:flex;flex-wrap:wrap;gap:10px}
+.docs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.doc{padding:10px;display:flex;flex-direction:column;gap:8px}
+.doc img{width:100%;border-radius:6px;border:1px solid var(--line)}
+.doc b{font-size:14px;padding:2px 4px}
+@media (max-width:760px){.docs{grid-template-columns:minmax(0,1fr)}.done-acts .btn{flex:1 1 100%}}
+.spin{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.5);border-top-color:#fff;border-radius:50%;animation:sp 1s linear infinite;vertical-align:-3px}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--navy);color:#fff;padding:12px 18px;border-radius:12px;font-weight:600;font-size:14px;z-index:90;max-width:calc(100% - 32px);box-shadow:0 12px 30px -10px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="logo-180.png" alt="" width="44" height="44">
+      <span><b data-t="brand"></b><small data-t="brandSub"></small></span>
+    </a>
+    <a class="back" href="index.html" data-t="back"></a>
+    <span class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">ENG</button>
+      <button type="button" data-lang="ta" aria-pressed="false">தமிழ்</button>
+    </span>
+  </div>
+</header>
+
+<main class="wrap">
+  <ol class="steps" id="steps">
+    <li><span>1</span><em data-t="st1"></em></li>
+    <li><span>2</span><em data-t="st2"></em></li>
+    <li><span>3</span><em data-t="st3"></em></li>
+    <li><span>4</span><em data-t="st4"></em></li>
+  </ol>
+
+  <!-- STEP 1: choose a room -->
+  <section id="s1" aria-labelledby="h1">
+    <div class="title"><h1 id="h1" data-t="h1"></h1><p data-t="p1"></p></div>
+    <div class="card dates">
+      <label class="field"><span data-t="checkin"></span><input type="date" id="d-in"></label>
+      <label class="field"><span data-t="checkout"></span><input type="date" id="d-out"></label>
+      <div class="nights" id="nights"></div>
+    </div>
+    <div class="card legend">
+      <span><i style="background:var(--free);border:2px solid var(--free-b)"></i><em style="font-style:normal" data-t="lgFree"></em></span>
+      <span><i style="background:var(--teal)"></i><em style="font-style:normal" data-t="lgSel"></em></span>
+      <span><i style="background:var(--hold);border:2px solid var(--hold-b)"></i><em style="font-style:normal" data-t="lgHold"></em></span>
+      <span><i style="background:#EEF1F4;border:2px dashed #CBD3DC"></i><em style="font-style:normal" data-t="lgBooked"></em></span>
+    </div>
+    <div class="layout">
+      <div class="floors" id="floors"></div>
+      <aside class="side" id="side1"></aside>
+    </div>
+  </section>
+
+  <!-- STEP 2: details -->
+  <section id="s2" hidden aria-labelledby="h2">
+    <div class="lock" id="lock2"></div>
+    <div class="layout">
+      <form class="card form" id="gform" novalidate>
+        <div class="full title" style="margin:0"><h1 id="h2" data-t="h2"></h1><p data-t="p2"></p></div>
+        <label class="field full"><span data-t="fName"></span><input id="g-name" autocomplete="name"><span class="err" id="e-name" hidden></span></label>
+        <label class="field"><span data-t="fPhone"></span><input id="g-phone" inputmode="tel" autocomplete="tel" placeholder="98XXXXXXXX"><span class="err" id="e-phone" hidden></span></label>
+        <label class="field"><span data-t="fEmail"></span><input id="g-email" type="email" autocomplete="email" placeholder="name@gmail.com"><span class="err" id="e-email" hidden></span></label>
+        <div class="full steppers" id="steppers"></div>
+        <label class="field"><span data-t="fArrive"></span><select id="g-arrive"></select></label>
+        <label class="field"><span data-t="fId"></span><select id="g-id"><option>Aadhaar</option><option>Driving licence</option><option>Voter ID</option><option>Passport</option></select></label>
+        <label class="field full"><span data-t="fGst"></span><input id="g-gst" autocapitalize="characters" placeholder="33ABCDE1234F1Z5" maxlength="15"><span class="err" id="e-gst" hidden></span></label>
+        <label class="check full"><input type="checkbox" id="g-rules"><span data-t="fRules"></span></label>
+        <span class="err full" id="e-rules" hidden></span>
+        <div class="full acts">
+          <button class="btn btn-out" type="button" id="b-change" data-t="change"></button>
+          <button class="btn btn-teal" type="submit" id="b-topay"></button>
+        </div>
+      </form>
+      <aside class="side" id="side2"></aside>
+    </div>
+  </section>
+
+  <!-- STEP 3: pay -->
+  <section id="s3" hidden aria-labelledby="h3">
+    <div class="lock" id="lock3"></div>
+    <div class="layout">
+      <div class="card pay">
+        <div class="title" style="margin:0"><h1 id="h3"></h1><p data-t="p3"></p></div>
+        <a class="btn btn-teal btn-big" id="b-upi" href="#"></a>
+        <div class="apps"><span data-t="opens"></span><b style="color:#1A73E8">Google Pay</b>·<b style="color:#5F259F">PhonePe</b>·<b style="color:#00A2D8">Paytm</b>·<b style="color:#E35205">BHIM</b></div>
+        <div class="or" data-t="orScan"></div>
+        <div class="qrbox">
+          <div class="qr"><canvas id="qr" width="330" height="330" aria-label="UPI QR code"></canvas></div>
+          <div class="upi">
+            <div class="upi-id"><span><span class="small" data-t="upiId"></span><br><b id="upi-id"></b></span><button class="btn btn-out" type="button" id="b-copy" data-t="copy"></button></div>
+            <span id="pay-amt" style="font-size:15px"></span>
+            <span class="small" data-t="qrNote"></span>
+          </div>
+        </div>
+        <div class="utr">
+          <b style="font-size:16px" data-t="utrH"></b>
+          <span class="small" data-t="utrP"></span>
+          <div class="utr-row">
+            <input id="g-utr" inputmode="numeric" maxlength="22" placeholder="e.g. 432198765012" aria-label="UPI transaction number (UTR)">
+            <button class="btn btn-dark" type="button" id="b-confirm"></button>
+          </div>
+          <span class="err" id="e-utr" hidden></span>
+        </div>
+      </div>
+      <aside class="side" id="side3"></aside>
+    </div>
+  </section>
+
+  <!-- STEP 4: confirmed -->
+  <section id="s4" hidden aria-labelledby="h4">
+    <div class="card done-h">
+      <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span>
+      <div class="done-t"><h1 id="h4"></h1><span id="done-line"></span><span class="small" id="done-note"></span></div>
+    </div>
+    <div class="card" style="padding:16px;margin-bottom:18px;display:flex;flex-direction:column;gap:12px">
+      <div class="done-acts">
+        <button class="btn btn-wa" type="button" id="b-wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg><span data-t="sendWa"></span></button>
+        <button class="btn btn-teal" type="button" id="b-inv" data-t="dlInv"></button>
+        <button class="btn btn-out" type="button" id="b-rcp" data-t="dlRcp"></button>
+        <button class="btn btn-out" type="button" id="b-cottage" data-t="tellCottage"></button>
+      </div>
+      <span class="small" data-t="waHow"></span>
+    </div>
+    <div class="docs">
+      <div class="card doc"><b data-t="invH"></b><img id="img-inv" alt="Tax invoice"></div>
+      <div class="card doc"><b data-t="rcpH"></b><img id="img-rcp" alt="Payment receipt"></div>
+    </div>
+    <p style="margin-top:18px"><a class="btn btn-out" href="index.html" data-t="backSite"></a></p>
+  </section>
+</main>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="booking-config.js"></script>
+<script src="qr.js"></script>
+<script>
+(function(){
+"use strict";
+const S = window.SAC, B = S.business;
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+
+/* ---------- words ---------- */
+const W = {
+  en: {
+    brand:"Sri Ambalavanar Cottage", brandSub:"Room booking", back:"← Back to website",
+    st1:"Choose room", st2:"Your details", st3:"Pay", st4:"Confirmed",
+    h1:"Choose your room", p1:"Pick a green room on the floor plan. Grey rooms are booked; orange rooms are being paid for by another guest right now.",
+    checkin:"Check-in", checkout:"Check-out", night:"night", nights:"nights",
+    lgFree:"Free", lgSel:"Your choice", lgHold:"On hold (someone is paying)", lgBooked:"Booked",
+    left:"LEFT", right:"RIGHT", corridor:"CORRIDOR", stairs:"STAIRS", reception:"RECEPTION", stairsUp:"STAIRS FROM RECEPTION", entrance:"▲ ENTRANCE", upStairs:"Up the stairs from reception", endCorr:"End of corridor",
+    free:"free", of:"of", from:"from", selected:"selected", booked:"Booked", onhold:"On hold",
+    pickRoom:"Tap a green room", pickRoomP:"Your room, price and GST appear here.",
+    floor_G:"Ground floor", floor_F:"First floor", side_L:"left side", side_R:"right side", side_E:"end of corridor",
+    ac:"AC", nonac:"Non-AC", kit:"kit", inclGst:"Includes GST 5%", total:"Total",
+    childFree:"Children below 12 stay free · Extra bed ₹500 / night",
+    hold:"Lock room {r} & continue →", holdNote:"The room is locked for you for {m} minutes while you pay.",
+    loading:"Loading rooms…", liveErr:"Could not load live rooms. Check your internet and try again.",
+    taken:"Sorry, room {r} was just taken by another guest. Please pick another room.",
+    badDates:"Check-out must be after check-in.",
+    lockOn:"Room {r} is locked for you · {t} left. Other guests see it as \"On hold\".",
+    lockPay:"Room {r} is locked for you · {t} left. If time runs out, the room is released for others.",
+    lockOver:"Lock time is over. If you have already paid, enter the UTR now: we confirm it if the room is still free.",
+    lockOver2:"Lock time is over and room {r} was released. Please choose your room again.",
+    h2:"Your details", p2:"Your GST invoice and receipt are made in this name.",
+    fName:"Full name (as on ID proof)", fPhone:"Mobile (WhatsApp)", fEmail:"Email ID", fArrive:"Arrival time", fId:"ID proof you will bring",
+    fGst:"Your GSTIN (optional, for company bills)", fRules:"I agree to the house rules: valid photo ID for every adult, no smoking, no pets.",
+    adults:"Adults", adultsH:"Max {n} in this room", children:"Children", childrenH:"Below 12 · free", beds:"Extra bed", bedsH:"₹500 / night incl. GST",
+    arrive:["Morning (6–10 AM)","Late morning (10 AM–12 PM)","Afternoon (12–4 PM)","Evening (4–8 PM)","Night (8 PM–12 AM)","Late night (after 12 AM)"],
+    change:"← Change room", toPay:"Continue to pay {a} →",
+    errName:"Please enter your full name.", errPhone:"Enter a 10-digit mobile number.", errEmail:"Enter a valid email ID.", errGst:"GSTIN should be 15 letters/numbers.", errRules:"Please accept the house rules.",
+    taxable:"Taxable value (before GST)", guests:"Guests", room:"Room", stay:"Stay", roomRent:"Room rent", extraBed:"Extra bed", cgst:"CGST 2.5%", sgst:"SGST 2.5%",
+    payH:"Pay {a} with UPI", p3:"On a phone: tap the button, choose your UPI app. The amount is already filled in. Enter your UPI PIN to pay.",
+    payBtn:"Pay {a} with a UPI app", opens:"Opens", orScan:"OR SCAN THIS QR WITH ANY UPI APP", upiId:"UPI ID", copy:"Copy", copied:"Copied",
+    amtNote:"Amount: <b>{a}</b> · Note: <b>{c}</b>", qrNote:"The QR already has the amount and your booking number.",
+    utrH:"After paying, enter the 12-digit UTR / transaction number", utrP:"Find it in your UPI app under this payment (UPI Ref No / UTR). The cottage checks it with the bank.",
+    confirm:"I have paid · Confirm", errUtr:"Enter the 12-digit UTR number from your UPI app.", confirming:"Confirming…",
+    safe:"You pay straight to the cottage's UPI. We never see your UPI PIN.", editDetails:"← Edit details",
+    doneH:"Room {r} is booked for you!", doneLine:"Booking <b>{c}</b> · {d} · {a} paid by UPI",
+    doneNote:"Your invoice has been downloaded. Show the receipt and a photo ID at the reception.",
+    sendWa:"Send to my WhatsApp", dlInv:"Download invoice (PDF)", dlRcp:"Download receipt (PDF)", tellCottage:"Send booking to the cottage",
+    waHow:"\"Send to my WhatsApp\" opens WhatsApp with the invoice and receipt attached. Choose a chat (your own number, family or office) and tap Send.",
+    waDesk:"Invoice and receipt downloaded. WhatsApp is opening: choose a chat, attach the two PDFs and send.",
+    invH:"Tax invoice", rcpH:"Payment receipt", backSite:"← Back to website",
+    demo:"Demo mode: room lock is kept only on this device. Connect the database before going live.",
+    confirmErr:"Could not confirm: {e}. Please WhatsApp the cottage on +91 90031 97704 with your UTR.",
+    preparing:"Preparing your invoice…"
+  },
+  ta: {
+    brand:"ஸ்ரீ அம்பலவாணர் குடில்", brandSub:"அறை முன்பதிவு", back:"← இணையதளத்திற்கு",
+    st1:"அறை தேர்வு", st2:"உங்கள் விவரம்", st3:"பணம் செலுத்த", st4:"உறுதி",
+    h1:"உங்கள் அறையைத் தேர்ந்தெடுங்கள்", p1:"தள வரைபடத்தில் பச்சை அறையைத் தொடுங்கள். சாம்பல் = முன்பதிவானது; ஆரஞ்சு = வேறொருவர் இப்போது பணம் செலுத்துகிறார்.",
+    checkin:"வருகை தேதி", checkout:"புறப்படும் தேதி", night:"இரவு", nights:"இரவுகள்",
+    lgFree:"காலி", lgSel:"உங்கள் தேர்வு", lgHold:"பிடிப்பில் (பணம் செலுத்துகிறார்)", lgBooked:"முன்பதிவானது",
+    left:"இடது", right:"வலது", corridor:"நடைபாதை", stairs:"படிக்கட்டு", reception:"வரவேற்பு", stairsUp:"வரவேற்பிலிருந்து படிக்கட்டு", entrance:"▲ நுழைவு", upStairs:"வரவேற்பிலிருந்து மாடிக்கு", endCorr:"நடைபாதை முடிவில்",
+    free:"காலி", of:"/", from:"முதல்", selected:"தேர்வு", booked:"முன்பதிவானது", onhold:"பிடிப்பில்",
+    pickRoom:"பச்சை அறையைத் தொடுங்கள்", pickRoomP:"உங்கள் அறை, கட்டணம், GST இங்கே வரும்.",
+    floor_G:"தரைத் தளம்", floor_F:"முதல் தளம்", side_L:"இடது பக்கம்", side_R:"வலது பக்கம்", side_E:"நடைபாதை முடிவில்",
+    ac:"AC", nonac:"Non-AC", kit:"கிட்", inclGst:"GST 5% உட்பட", total:"மொத்தம்",
+    childFree:"12 வயதுக்குட்பட்ட குழந்தைகள் இலவசம் · கூடுதல் கட்டில் ₹500 / இரவு",
+    hold:"அறை {r}-ஐ பூட்டி தொடரவும் →", holdNote:"பணம் செலுத்தும் வரை {m} நிமிடம் அறை உங்களுக்காகப் பூட்டப்படும்.",
+    loading:"அறைகள் ஏற்றப்படுகின்றன…", liveErr:"அறை விவரம் ஏற்ற முடியவில்லை. இணையத்தைச் சரிபார்த்து மீண்டும் முயலுங்கள்.",
+    taken:"மன்னிக்கவும், அறை {r} இப்போதுதான் வேறொருவரால் எடுக்கப்பட்டது. வேறு அறையைத் தேர்ந்தெடுங்கள்.",
+    badDates:"புறப்படும் தேதி வருகை தேதிக்குப் பிறகு இருக்க வேண்டும்.",
+    lockOn:"அறை {r} உங்களுக்காகப் பூட்டப்பட்டுள்ளது · {t} மீதம்.",
+    lockPay:"அறை {r} உங்களுக்காகப் பூட்டப்பட்டுள்ளது · {t} மீதம். நேரம் முடிந்தால் அறை விடுவிக்கப்படும்.",
+    lockOver:"பூட்டு நேரம் முடிந்தது. ஏற்கனவே பணம் செலுத்தியிருந்தால் UTR எண்ணை இப்போது உள்ளிடுங்கள்.",
+    lockOver2:"பூட்டு நேரம் முடிந்து அறை {r} விடுவிக்கப்பட்டது. மீண்டும் அறையைத் தேர்ந்தெடுங்கள்.",
+    h2:"உங்கள் விவரங்கள்", p2:"GST பில்லும் ரசீதும் இந்தப் பெயரில் தயாரிக்கப்படும்.",
+    fName:"முழுப் பெயர் (அடையாள அட்டையில் உள்ளபடி)", fPhone:"மொபைல் (WhatsApp)", fEmail:"மின்னஞ்சல்", fArrive:"வருகை நேரம்", fId:"கொண்டு வரும் அடையாள அட்டை",
+    fGst:"உங்கள் GSTIN (விருப்பம், நிறுவன பில்லுக்கு)", fRules:"விதிகளை ஏற்கிறேன்: ஒவ்வொரு பெரியவருக்கும் புகைப்பட அடையாள அட்டை, புகைபிடிக்கக் கூடாது, செல்லப் பிராணிகள் கூடாது.",
+    adults:"பெரியவர்கள்", adultsH:"இந்த அறையில் அதிகபட்சம் {n}", children:"குழந்தைகள்", childrenH:"12 வயதுக்குக் கீழ் · இலவசம்", beds:"கூடுதல் கட்டில்", bedsH:"₹500 / இரவு GST உட்பட",
+    arrive:["காலை (6–10)","முற்பகல் (10–12)","மதியம் (12–4)","மாலை (4–8)","இரவு (8–12)","நள்ளிரவுக்குப் பின்"],
+    change:"← அறையை மாற்ற", toPay:"{a} செலுத்தத் தொடரவும் →",
+    errName:"உங்கள் முழுப் பெயரை உள்ளிடவும்.", errPhone:"10 இலக்க மொபைல் எண்ணை உள்ளிடவும்.", errEmail:"சரியான மின்னஞ்சலை உள்ளிடவும்.", errGst:"GSTIN 15 எழுத்து/எண்கள் இருக்க வேண்டும்.", errRules:"விதிகளை ஏற்கவும்.",
+    taxable:"வரிக்கு முந்தைய மதிப்பு", guests:"விருந்தினர்", room:"அறை", stay:"தங்குதல்", roomRent:"அறை வாடகை", extraBed:"கூடுதல் கட்டில்", cgst:"CGST 2.5%", sgst:"SGST 2.5%",
+    payH:"UPI-ல் {a} செலுத்துங்கள்", p3:"மொபைலில்: பொத்தானைத் தொட்டு உங்கள் UPI செயலியைத் தேர்ந்தெடுங்கள். தொகை ஏற்கனவே நிரப்பப்பட்டிருக்கும். UPI PIN உள்ளிட்டு செலுத்துங்கள்.",
+    payBtn:"UPI செயலியில் {a} செலுத்த", opens:"திறக்கும்:", orScan:"அல்லது எந்த UPI செயலியிலும் இந்த QR-ஐ ஸ்கேன் செய்யுங்கள்", upiId:"UPI ID", copy:"நகலெடு", copied:"நகலெடுக்கப்பட்டது",
+    amtNote:"தொகை: <b>{a}</b> · குறிப்பு: <b>{c}</b>", qrNote:"QR-ல் தொகையும் முன்பதிவு எண்ணும் ஏற்கனவே உள்ளன.",
+    utrH:"பணம் செலுத்திய பின் 12 இலக்க UTR / பரிவர்த்தனை எண்ணை உள்ளிடுங்கள்", utrP:"உங்கள் UPI செயலியில் இந்தப் பணம் செலுத்தலின் கீழ் (UPI Ref No / UTR) இருக்கும்.",
+    confirm:"பணம் செலுத்தினேன் · உறுதி செய்", errUtr:"UPI செயலியில் உள்ள 12 இலக்க UTR எண்ணை உள்ளிடுங்கள்.", confirming:"உறுதி செய்கிறது…",
+    safe:"நீங்கள் நேரடியாகக் குடிலின் UPI-க்குச் செலுத்துகிறீர்கள். உங்கள் UPI PIN எங்களுக்குத் தெரியாது.", editDetails:"← விவரங்களைத் திருத்த",
+    doneH:"அறை {r} உங்களுக்கு முன்பதிவாகிவிட்டது!", doneLine:"முன்பதிவு <b>{c}</b> · {d} · UPI-ல் {a} செலுத்தப்பட்டது",
+    doneNote:"உங்கள் பில் பதிவிறக்கப்பட்டது. வரவேற்பில் ரசீதையும் புகைப்பட அடையாள அட்டையையும் காட்டுங்கள்.",
+    sendWa:"என் WhatsApp-க்கு அனுப்ப", dlInv:"பில் பதிவிறக்கம் (PDF)", dlRcp:"ரசீது பதிவிறக்கம் (PDF)", tellCottage:"குடிலுக்கு முன்பதிவை அனுப்ப",
+    waHow:"\"என் WhatsApp-க்கு அனுப்ப\" அழுத்தினால் பில்லும் ரசீதும் இணைக்கப்பட்டு WhatsApp திறக்கும். ஒரு chat-ஐத் தேர்ந்தெடுத்து Send அழுத்துங்கள்.",
+    waDesk:"பில்லும் ரசீதும் பதிவிறக்கப்பட்டன. WhatsApp திறக்கிறது: chat-ஐத் தேர்ந்தெடுத்து இரண்டு PDF-களையும் இணைத்து அனுப்புங்கள்.",
+    invH:"வரி விலைப்பட்டியல் (Tax invoice)", rcpH:"பணம் பெற்ற ரசீது", backSite:"← இணையதளத்திற்கு",
+    demo:"டெமோ முறை: அறை பூட்டு இந்தச் சாதனத்தில் மட்டும். நேரலைக்கு முன் தரவுத்தளத்தை இணைக்கவும்.",
+    confirmErr:"உறுதி செய்ய முடியவில்லை: {e}. உங்கள் UTR-உடன் +91 90031 97704-க்கு WhatsApp செய்யுங்கள்.",
+    preparing:"உங்கள் பில் தயாராகிறது…"
+  }
+};
+let LANG = "en";
+try { LANG = localStorage.getItem("sac-lang") === "ta" ? "ta" : "en"; } catch (e) {}
+const t = (k, v) => { let s = (W[LANG][k] ?? W.en[k] ?? k); if (v) Object.keys(v).forEach(x => { s = s.split("{" + x + "}").join(v[x]); }); return s; };
+
+/* ---------- money + dates ---------- */
+const r2 = n => Math.round(n * 100) / 100;
+const inr = n => "₹" + Number(n).toLocaleString("en-IN", { maximumFractionDigits: 0 });
+const inr2 = n => "₹" + Number(n).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const iso = d => new Date(d.getTime() - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
+const addDays = (s, n) => { const d = new Date(s + "T00:00:00"); d.setDate(d.getDate() + n); return iso(d); };
+const nightsOf = (a, b) => Math.round((new Date(b + "T00:00:00") - new Date(a + "T00:00:00")) / 864e5);
+const fmtD = (s, o) => new Date(s + "T00:00:00").toLocaleDateString(LANG === "ta" ? "ta-IN" : "en-IN", o || { weekday: "short", day: "numeric", month: "short", year: "numeric" });
+const fmtDen = s => new Date(s + "T00:00:00").toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+
+/* ---------- state ---------- */
+const today = iso(new Date());
+const qs = new URLSearchParams(location.search);
+const st = {
+  step: 1, din: qs.get("in") >= today ? qs.get("in") : addDays(today, 1), dout: null,
+  wantType: qs.get("type") || "", room: null, ac: qs.get("ac") !== "0", status: {}, loading: false,
+  hold: null, adults: 2, children: 0, beds: 0, booking: null, files: null
+};
+st.dout = qs.get("out") > st.din ? qs.get("out") : addDays(st.din, 1);
+
+function price(){
+  if (!st.room) return null;
+  const ty = S.types[S.typeOf(st.room)], n = Math.max(1, nightsOf(st.din, st.dout));
+  const rate = st.ac ? ty.ac : ty.nonac, bed = st.beds * S.extraBed;
+  const total = (rate + bed) * n;
+  const tax = r2(total * S.gstRate / (100 + S.gstRate)), cgst = r2(tax / 2), sgst = r2(tax - cgst);
+  const roomTaxable = r2(rate * n * 100 / (100 + S.gstRate)), bedTaxable = r2(total - tax - roomTaxable);
+  return { n, rate, bed, total, tax, cgst, sgst, taxable: r2(total - tax), roomTaxable, bedTaxable, ty };
+}
+function roomInfo(no){
+  for (const f of S.floors){
+    if (f.left.includes(no)) return { floor: f.id, side: "L" };
+    if (f.right.includes(no)) return { floor: f.id, side: "R" };
+    if (f.end.includes(no)) return { floor: f.id, side: "E" };
+  }
+  return { floor: "G", side: "L" };
+}
+
+/* ---------- data layer: live (Supabase) or demo (this browser) ---------- */
+const DEMO_KEY = "sac-demo-bookings";
+const demoAll = () => { try { return JSON.parse(localStorage.getItem(DEMO_KEY) || "[]"); } catch (e) { return []; } };
+const demoSave = a => { try { localStorage.setItem(DEMO_KEY, JSON.stringify(a)); } catch (e) {} };
+const overlap = (a1, a2, b1, b2) => a1 < b2 && b1 < a2;
+const activeDemo = () => demoAll().filter(b => b.status === "paid" || (b.status === "hold" && new Date(b.hold_until) > new Date()));
+const uid = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2));
+
+const DB = {
+  status(din, dout){
+    if (S.live()) return S.rpc("room_status", { p_in: din, p_out: dout }).then(rows => { const m = {}; (rows || []).forEach(r => { m[r.room] = r.state; }); return m; });
+    const m = {}; activeDemo().forEach(b => { if (overlap(din, dout, b.check_in, b.check_out)) m[b.room] = b.status === "paid" ? "booked" : "hold"; });
+    return Promise.resolve(m);
+  },
+  hold(room, din, dout){
+    if (S.live()) return S.rpc("hold_room", { p_room: room, p_in: din, p_out: dout });
+    const busy = activeDemo().some(b => b.room === room && overlap(din, dout, b.check_in, b.check_out));
+    if (busy) return Promise.reject(Object.assign(new Error("ROOM_TAKEN"), { code: "ROOM_TAKEN" }));
+    const all = demoAll(), n = all.length + 1;
+    const h = { token: uid(), code: "SAC-D" + String(n).padStart(4, "0"), room, check_in: din, check_out: dout, status: "hold", hold_until: new Date(Date.now() + S.holdMinutes * 6e4).toISOString() };
+    all.push(h); demoSave(all);
+    return Promise.resolve({ token: h.token, code: h.code, hold_until: h.hold_until });
+  },
+  release(token){
+    if (!token) return Promise.resolve();
+    if (S.live()) return S.rpc("release_hold", { p_token: token }).catch(() => {});
+    demoSave(demoAll().filter(b => !(b.token === token && b.status === "hold")));
+    return Promise.resolve();
+  },
+  confirm(token, details, utr){
+    if (S.live()) return S.rpc("confirm_payment", { p_token: token, p_details: details, p_utr: utr });
+    const all = demoAll(), b = all.find(x => x.token === token);
+    if (!b) return Promise.reject(new Error("Booking not found"));
+    const clash = all.some(x => x !== b && x.room === b.room && overlap(b.check_in, b.check_out, x.check_in, x.check_out) && (x.status === "paid" || (x.status === "hold" && new Date(x.hold_until) > new Date())));
+    if (clash) return Promise.reject(Object.assign(new Error("ROOM_TAKEN"), { code: "ROOM_TAKEN" }));
+    const seq = all.filter(x => x.status === "paid").length + 1;
+    Object.assign(b, { status: "paid", utr, details, amount: details.amount, invoice_no: "DEMO/" + String(seq).padStart(4, "0"), receipt_no: "DEMO-R/" + String(seq).padStart(4, "0"), paid_at: new Date().toISOString() });
+    demoSave(all);
+    return Promise.resolve({ code: b.code, invoice_no: b.invoice_no, receipt_no: b.receipt_no, amount: b.amount, paid_at: b.paid_at });
+  }
+};
+
+/* ---------- UI helpers ---------- */
+let toastT;
+function toast(msg){ const el = $("toast"); el.textContent = msg; el.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => { el.hidden = true; }, 4200); }
+function setStep(n){
+  st.step = n;
+  [1, 2, 3, 4].forEach(i => { $("s" + i).hidden = i !== n; });
+  [...$("steps").children].forEach((li, i) => { li.className = i + 1 < n ? "done" : i + 1 === n ? "now" : ""; li.querySelector("span").textContent = i + 1 < n ? "✓" : i + 1; });
+  scrollTo({ top: 0, behavior: "smooth" });
+  render();
+}
+function applyLang(l){
+  LANG = l; document.documentElement.lang = l;
+  try { localStorage.setItem("sac-lang", l); } catch (e) {}
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  document.querySelectorAll("[data-t]").forEach(el => { el.innerHTML = t(el.dataset.t); });
+  const a = $("g-arrive"), v = a.selectedIndex; a.innerHTML = t("arrive").map(x => `<option>${esc(x)}</option>`).join(""); a.selectedIndex = v < 0 ? 2 : v;
+  render();
+  if (st.step === 4 && st.booking) renderDocs();
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.lang)));
+
+/* ---------- STEP 1 ---------- */
+function loadStatus(){
+  if (!(st.dout > st.din)) { render(); return; }
+  st.loading = true; render();
+  DB.status(st.din, st.dout).then(m => {
+    st.status = m || {}; st.loading = false; st.err = "";
+    if (st.room && st.status[st.room]) st.room = null;
+    if (!st.room && st.wantType){ const pick = S.allRooms().sort((a, b) => a[0] === b[0] ? parseInt(a.slice(1)) - parseInt(b.slice(1)) : a[0] === "G" ? -1 : 1).find(r => S.typeOf(r) === st.wantType && !st.status[r]); if (pick) st.room = pick; st.wantType = ""; }
+    render();
+  }).catch(() => { st.loading = false; st.err = t("liveErr"); render(); });
+}
+function roomBtn(no){
+  const s = st.status[no], ty = S.types[S.typeOf(no)];
+  const cls = s === "booked" ? "booked" : s === "hold" ? "hold" : no === st.room ? "sel" : "";
+  const label = s === "booked" ? t("booked") : s === "hold" ? t("onhold") : no === st.room ? t("selected") : inr(st.ac ? ty.ac : ty.nonac);
+  const dis = s ? "disabled" : "";
+  return `<button type="button" class="room ${cls} ${st.loading ? "loading" : ""}" data-room="${no}" ${dis} aria-pressed="${no === st.room}" aria-label="${t("room")} ${no}, ${esc(ty[LANG])}, ${esc(label)}"><b>${no}</b><small>${esc(ty[LANG])}</small><small>${esc(label)}</small></button>`;
+}
+function renderFloors(){
+  $("floors").innerHTML = S.floors.map(f => {
+    const all = f.end.concat(f.left, f.right), free = all.filter(r => !st.status[r]).length;
+    const isG = f.id === S.floors[0].id;
+    return `<section class="card floor">
+      <div class="floor-h"><h2>${esc(f[LANG])} <span>${esc(firstLast(all))}</span></h2><span>${st.loading ? t("loading") : free + " " + t("of") + " " + all.length + " " + t("free")}</span></div>
+      <div class="plan">
+        ${f.end.length ? `<div class="endrow">${f.end.map(roomBtn).join("")}</div>` : ""}
+        <div class="cols">
+          <div class="col"><span class="col-h">${t("left")}</span>${f.left.map(roomBtn).join("")}</div>
+          <div class="col"><span class="col-h"></span><div class="corr"><span>${t("corridor")}</span></div><div class="fix stairs">${t("stairs")}</div>${isG ? `<div class="fix rec">${t("reception")}</div>` : `<div class="fix stairs" style="background:#E2E8F0">${t("stairsUp")}</div>`}</div>
+          <div class="col"><span class="col-h">${t("right")}</span>${f.right.map(roomBtn).join("")}</div>
+        </div>
+      </div>
+      <span class="door" style="background:${isG ? "#B45309" : "#64748B"}">${isG ? t("entrance") : t("upStairs")}</span>
+    </section>`;
+  }).join("");
+}
+function firstLast(all){ const s = [...all].sort((a, b) => parseInt(a.slice(1)) - parseInt(b.slice(1))); return "(" + s[0] + " – " + s[s.length - 1] + ")"; }
+function summaryCard(withSeg){
+  const p = price(); if (!p) return `<div class="card empty"><b>${t("pickRoom")}</b>${t("pickRoomP")}</div>`;
+  const ri = roomInfo(st.room), ty = p.ty;
+  const nights = p.n + " " + (p.n > 1 ? t("nights") : t("night"));
+  return `<div class="card sum">
+    <img src="${ty.photo}" alt="">
+    <div class="sum-b">
+      <div class="row" style="align-items:baseline"><h3>${t("room")} ${st.room}</h3><span>${t("floor_" + ri.floor)} · ${t("side_" + ri.side)}</span></div>
+      <span style="color:#33414F;font-size:14px">${ty[LANG]} · ${esc(ty.beds[LANG])} · ${ty.kit}-${t("kit")}</span>
+      ${withSeg ? `<div class="seg" role="group" aria-label="AC / Non-AC"><button type="button" data-ac="1" aria-pressed="${st.ac}">${t("ac")} · ${inr(ty.ac)}</button><button type="button" data-ac="0" aria-pressed="${!st.ac}">${t("nonac")} · ${inr(ty.nonac)}</button></div>` : `<span style="font-weight:700">${st.ac ? t("ac") : t("nonac")}</span>`}
+      <div class="hr"></div>
+      <div class="row"><span>${fmtD(st.din, { day: "numeric", month: "short" })} → ${fmtD(st.dout, { day: "numeric", month: "short" })} · ${nights}</span><b>${inr(p.rate * p.n)}</b></div>
+      ${st.beds ? `<div class="row"><span>${t("extraBed")} × ${st.beds}</span><b>${inr(p.bed * p.n)}</b></div>` : ""}
+      ${st.step > 1 ? `<div class="row"><span>${t("guests")}</span><b>${st.adults} + ${st.children}</b></div>` : ""}
+      <div class="row"><span>${t("taxable")}</span><span>${inr2(p.taxable)}</span></div>
+      <div class="row"><span>${t("cgst")} + ${t("sgst")}</span><span>${inr2(p.tax)}</span></div>
+      <div class="row tot"><span>${t("total")}</span><b>${inr(p.total)}</b></div>
+      <span class="small">${t("childFree")}</span>
+      ${st.step === 1 ? `<button class="btn btn-teal btn-big" type="button" id="b-hold" ${st.busy ? "disabled" : ""}>${st.busy ? '<span class="spin"></span>' : t("hold", { r: st.room })}</button><span class="small" style="text-align:center">${t("holdNote", { m: S.holdMinutes })}</span>` : ""}
+      ${st.step === 3 ? `<button class="btn btn-out" type="button" id="b-edit">${t("editDetails")}</button>` : ""}
+    </div>
+  </div>
+  ${st.step === 3 ? `<div class="safe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg><span>${t("safe")}</span></div>` : ""}
+  ${!S.live() && st.step < 4 ? `<span class="small">${t("demo")}</span>` : ""}`;
+}
+function renderNights(){
+  const ok = st.dout > st.din, n = ok ? nightsOf(st.din, st.dout) : 0;
+  $("nights").innerHTML = ok ? `<b>${n}</b>${n > 1 ? t("nights") : t("night")}` : `<span class="err">${t("badDates")}</span>`;
+}
+
+/* ---------- STEP 2 ---------- */
+function renderSteppers(){
+  const ty = S.types[S.typeOf(st.room || "G2")];
+  st.adults = Math.min(st.adults, ty.adults + st.beds); if (st.adults < 1) st.adults = 1;
+  const rows = [
+    ["adults", t("adults"), t("adultsH", { n: ty.adults + st.beds }), st.adults, 1, ty.adults + st.beds],
+    ["children", t("children"), t("childrenH"), st.children, 0, 3],
+    ["beds", t("beds"), t("bedsH"), st.beds, 0, S.maxExtraBeds]
+  ];
+  $("steppers").innerHTML = rows.map(([k, lb, h, v, lo, hi]) => `<div class="stp"><b>${lb}</b><small>${h}</small><div><button type="button" data-k="${k}" data-d="-1" ${v <= lo ? "disabled" : ""} aria-label="${lb} −">−</button><output>${v}</output><button type="button" data-k="${k}" data-d="1" ${v >= hi ? "disabled" : ""} aria-label="${lb} +">+</button></div></div>`).join("");
+}
+$("steppers").addEventListener("click", e => {
+  const b = e.target.closest("button[data-k]"); if (!b) return;
+  const k = b.dataset.k, ty = S.types[S.typeOf(st.room)];
+  const lim = { adults: [1, ty.adults + st.beds], children: [0, 3], beds: [0, S.maxExtraBeds] }[k];
+  st[k] = Math.max(lim[0], Math.min(lim[1], st[k] + Number(b.dataset.d)));
+  if (k === "beds") st.adults = Math.min(st.adults, ty.adults + st.beds);
+  render();
+});
+
+/* ---------- lock timer ---------- */
+let timer;
+function tick(){
+  if (!st.hold || (st.step !== 2 && st.step !== 3)) return;
+  const ms = new Date(st.hold.hold_until) - new Date();
+  const lockSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+  if (ms > 0){
+    const m = Math.floor(ms / 6e4), s = Math.floor(ms / 1e3) % 60, tt = `<strong>${m}:${String(s).padStart(2, "0")}</strong>`;
+    $("lock2").className = $("lock3").className = "lock";
+    $("lock2").innerHTML = lockSvg + "<span>" + t("lockOn", { r: st.room, t: tt }) + "</span>";
+    $("lock3").innerHTML = lockSvg + "<span>" + t("lockPay", { r: st.room, t: tt }) + "</span>";
+  } else if (st.step === 2){
+    clearInterval(timer); DB.release(st.hold.token); st.hold = null;
+    toast(t("lockOver2", { r: st.room })); st.room = null; setStep(1); loadStatus();
+  } else {
+    $("lock3").className = "lock over"; $("lock3").innerHTML = lockSvg + "<span>" + t("lockOver") + "</span>";
+  }
+}
+function startTimer(){ clearInterval(timer); tick(); timer = setInterval(tick, 1000); }
+
+/* ---------- STEP 3 ---------- */
+function upiLink(){
+  const p = price();
+  return "upi://pay?pa=" + S.upiId + "&pn=" + encodeURIComponent(S.upiName) + "&am=" + p.total.toFixed(2) + "&cu=INR&tn=" + encodeURIComponent(st.hold.code + " Room " + st.room);
+}
+function drawQR(){
+  const m = window.makeQR(upiLink()), n = m.length, c = $("qr"), q = 4, size = n + q * 2, px = Math.floor(330 / size);
+  c.width = c.height = size * px;
+  const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.fillStyle = "#0F1E2E";
+  for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) if (m[y][x]) g.fillRect((x + q) * px, (y + q) * px, px, px);
+}
+
+/* ---------- render ---------- */
+function render(){
+  renderNights();
+  if (st.step === 1){
+    renderFloors();
+    $("side1").innerHTML = (st.err ? `<div class="msg err">${esc(st.err)}</div>` : "") + summaryCard(true);
+  }
+  if (st.step === 2){
+    renderSteppers();
+    $("side2").innerHTML = summaryCard(false);
+    $("b-topay").textContent = t("toPay", { a: inr(price().total) });
+  }
+  if (st.step === 3){
+    const p = price();
+    $("h3").textContent = t("payH", { a: inr(p.total) });
+    $("b-upi").textContent = t("payBtn", { a: inr(p.total) });
+    $("b-upi").href = upiLink();
+    $("upi-id").textContent = S.upiId;
+    $("pay-amt").innerHTML = t("amtNote", { a: inr(p.total), c: esc(st.hold.code) });
+    $("b-confirm").innerHTML = st.busy ? `<span class="spin"></span> ${t("confirming")}` : t("confirm");
+    $("b-confirm").disabled = !!st.busy;
+    $("side3").innerHTML = summaryCard(false);
+    drawQR();
+  }
+  if (st.step === 4 && st.booking){
+    const b = st.booking;
+    $("h4").textContent = t("doneH", { r: b.room });
+    $("done-line").innerHTML = t("doneLine", { c: esc(b.code), d: fmtD(b.din, { day: "numeric", month: "short" }) + " → " + fmtD(b.dout, { day: "numeric", month: "short", year: "numeric" }), a: inr(b.total) });
+    $("done-note").textContent = t("doneNote");
+  }
+}
+
+/* ---------- events ---------- */
+$("d-in").min = $("d-out").min = today;
+$("d-in").value = st.din; $("d-out").value = st.dout;
+$("d-in").addEventListener("change", e => { st.din = e.target.value || today; if (!(st.dout > st.din)) { st.dout = addDays(st.din, 1); $("d-out").value = st.dout; } $("d-out").min = addDays(st.din, 1); loadStatus(); });
+$("d-out").addEventListener("change", e => { st.dout = e.target.value; loadStatus(); });
+
+document.addEventListener("click", e => {
+  const rb = e.target.closest(".room[data-room]");
+  if (rb && !rb.disabled && st.step === 1){ st.room = rb.dataset.room; st.err = ""; render(); if (innerWidth < 960) $("side1").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+  const sb = e.target.closest(".seg button[data-ac]");
+  if (sb){ st.ac = sb.dataset.ac === "1"; render(); return; }
+  if (e.target.closest("#b-hold")) return doHold();
+  if (e.target.closest("#b-edit")) return setStep(2);
+});
+
+function doHold(){
+  if (!st.room || st.busy) return;
+  if (!(st.dout > st.din)) { toast(t("badDates")); return; }
+  st.busy = true; render();
+  DB.hold(st.room, st.din, st.dout).then(h => {
+    st.busy = false; st.hold = h;
+    const ty = S.types[S.typeOf(st.room)]; st.adults = ty.adults; st.children = 0; st.beds = 0;
+    setStep(2); startTimer();
+    setTimeout(() => $("g-name").focus({ preventScroll: true }), 400);
+  }).catch(err => {
+    st.busy = false;
+    if (String(err.code || err.message).includes("ROOM_TAKEN")) { st.err = t("taken", { r: st.room }); st.room = null; loadStatus(); }
+    else { st.err = t("liveErr"); render(); }
+  });
+}
+
+$("b-change").addEventListener("click", () => { clearInterval(timer); if (st.hold) DB.release(st.hold.token); st.hold = null; setStep(1); loadStatus(); });
+
+function validDetails(){
+  const name = $("g-name").value.trim(), ph = $("g-phone").value.replace(/\D/g, ""), em = $("g-email").value.trim(), gst = $("g-gst").value.trim().toUpperCase();
+  const okPh = ph.length === 10 || (ph.length === 12 && ph.startsWith("91"));
+  const okEm = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em), okGst = !gst || /^[0-9A-Z]{15}$/.test(gst), okR = $("g-rules").checked;
+  const set = (id, ok, k) => { $(id).hidden = ok; $(id).textContent = t(k); };
+  set("e-name", name.length >= 3, "errName"); set("e-phone", okPh, "errPhone"); set("e-email", okEm, "errEmail"); set("e-gst", okGst, "errGst"); set("e-rules", okR, "errRules");
+  const bad = [[name.length >= 3, "g-name"], [okPh, "g-phone"], [okEm, "g-email"], [okGst, "g-gst"], [okR, "g-rules"]].find(x => !x[0]);
+  if (bad) { $(bad[1]).focus(); return null; }
+  return { name, phone: ph.slice(-10), email: em, gstin: gst, arrival: $("g-arrive").value, id_proof: $("g-id").value };
+}
+$("gform").addEventListener("submit", e => {
+  e.preventDefault();
+  const d = validDetails(); if (!d) return;
+  st.guest = d; setStep(3);
+});
+$("b-copy").addEventListener("click", () => {
+  const done = () => { $("b-copy").textContent = t("copied"); setTimeout(() => { $("b-copy").textContent = t("copy"); }, 2000); };
+  if (navigator.clipboard) navigator.clipboard.writeText(S.upiId).then(done, done); else done();
+});
+$("b-confirm").addEventListener("click", () => {
+  const utr = $("g-utr").value.replace(/\s/g, "");
+  const ok = /^\d{12}$/.test(utr) || /^[A-Za-z0-9]{12,22}$/.test(utr);
+  $("e-utr").hidden = ok; $("e-utr").textContent = t("errUtr");
+  if (!ok) { $("g-utr").focus(); return; }
+  const p = price();
+  const details = Object.assign({}, st.guest, { ac: st.ac, adults: st.adults, children: st.children, extra_beds: st.beds, amount: p.total, lang: LANG });
+  st.busy = true; render();
+  DB.confirm(st.hold.token, details, utr).then(res => {
+    st.busy = false; clearInterval(timer);
+    st.booking = {
+      code: res.code || st.hold.code, invoice_no: res.invoice_no, receipt_no: res.receipt_no || res.invoice_no, paid_at: res.paid_at || new Date().toISOString(),
+      total: Number(res.amount || p.total), room: st.room, din: st.din, dout: st.dout, ac: st.ac, adults: st.adults, children: st.children, beds: st.beds, utr, guest: st.guest, p
+    };
+    try { localStorage.setItem("sac-last-booking", JSON.stringify(st.booking)); } catch (e) {}
+    setStep(4);
+    renderDocs().then(() => { download(st.files.inv); });
+  }).catch(err => {
+    st.busy = false; render();
+    const m = String(err.code || err.message);
+    $("e-utr").hidden = false;
+    $("e-utr").textContent = m.includes("ROOM_TAKEN") ? t("taken", { r: st.room }) : t("confirmErr", { e: err.message });
+  });
+});
+
+/* ---------- invoice + receipt (canvas → JPEG → PDF, no library) ---------- */
+const logoImg = new Image(); logoImg.src = "logo-180.png";
+const ONES = ["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"];
+const TENS = ["","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"];
+function w2(n){ return n < 20 ? ONES[n] : TENS[Math.floor(n / 10)] + (n % 10 ? "-" + ONES[n % 10] : ""); }
+function w3(n){ return (n >= 100 ? ONES[Math.floor(n / 100)] + " Hundred" + (n % 100 ? " " : "") : "") + (n % 100 ? w2(n % 100) : ""); }
+function words(num){
+  let n = Math.round(num); if (!n) return "Zero";
+  const parts = [], cr = Math.floor(n / 1e7); n %= 1e7; const lk = Math.floor(n / 1e5); n %= 1e5; const th = Math.floor(n / 1e3); n %= 1e3;
+  if (cr) parts.push(w3(cr) + " Crore"); if (lk) parts.push(w2(lk) + " Lakh"); if (th) parts.push(w2(th) + " Thousand"); if (n) parts.push(w3(n));
+  return parts.join(" ");
+}
+function makeCanvas(){ const c = document.createElement("canvas"); c.width = 1240; c.height = 1754; const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.textBaseline = "alphabetic"; return [c, g]; }
+const F = (w, s) => `${w} ${s}px "Plus Jakarta Sans", Arial, sans-serif`;
+function txt(g, s, x, y, o){ o = o || {}; g.font = F(o.w || 500, o.s || 22); g.fillStyle = o.c || "#0F1E2E"; g.textAlign = o.a || "left"; g.fillText(s, x, y); }
+function wrap(g, s, x, y, maxW, lh, o){ o = o || {}; g.font = F(o.w || 500, o.s || 22); const ws = String(s).split(" "); let line = ""; for (const w of ws){ const tst = line ? line + " " + w : w; if (g.measureText(tst).width > maxW && line){ txt(g, line, x, y, o); y += lh; line = w; } else line = tst; } if (line) { txt(g, line, x, y, o); y += lh; } return y; }
+function header(g, title, no, dateStr){
+  const M = 80;
+  g.fillStyle = "#0F766E"; g.fillRect(0, 0, 1240, 14);
+  try { g.drawImage(logoImg, M, 60, 110, 110); } catch (e) {}
+  txt(g, B.name, M + 130, 98, { w: 800, s: 34 });
+  txt(g, "Prop. " + B.legalName, M + 130, 132, { s: 20, c: "#5B6878" });
+  txt(g, B.address1, M + 130, 160, { s: 20, c: "#5B6878" });
+  txt(g, B.address2, M + 130, 186, { s: 20, c: "#5B6878" });
+  txt(g, "GSTIN: " + B.gstin + "   ·   State: " + B.stateName + " (" + B.stateCode + ")", M + 130, 216, { w: 700, s: 20 });
+  txt(g, B.phone + "  ·  " + B.email, M + 130, 244, { s: 19, c: "#5B6878" });
+  txt(g, title, 1160, 100, { w: 800, s: 34, c: "#0F766E", a: "right" });
+  txt(g, no, 1160, 138, { w: 700, s: 22, a: "right" });
+  txt(g, dateStr, 1160, 168, { s: 20, c: "#5B6878", a: "right" });
+  g.fillStyle = "#E6E9EE"; g.fillRect(M, 280, 1080, 2);
+}
+function drawInvoice(b){
+  const [c, g] = makeCanvas(), M = 80, p = b.p, ty = S.types[S.typeOf(b.room)];
+  const paid = new Date(b.paid_at), pd = paid.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+  header(g, "TAX INVOICE", "Invoice No: " + b.invoice_no, "Date: " + pd);
+  g.fillStyle = "#F5F7F9"; g.fillRect(M, 310, 1080, 210);
+  txt(g, "BILLED TO", M + 24, 350, { w: 700, s: 18, c: "#5B6878" });
+  txt(g, b.guest.name, M + 24, 386, { w: 800, s: 26 });
+  txt(g, "+91 " + b.guest.phone, M + 24, 420, { s: 20 });
+  txt(g, b.guest.email, M + 24, 450, { s: 20 });
+  txt(g, (b.guest.gstin ? "GSTIN: " + b.guest.gstin + "  ·  " : "") + "Place of supply: " + B.stateName + " (" + B.stateCode + ")", M + 24, 484, { s: 19, c: "#33414F" });
+  txt(g, "STAY", M + 560, 350, { w: 700, s: 18, c: "#5B6878" });
+  txt(g, "Room " + b.room + " · " + ty.en + " · " + (b.ac ? "AC" : "Non-AC"), M + 560, 386, { w: 800, s: 24 });
+  txt(g, fmtDen(b.din) + "  →  " + fmtDen(b.dout) + "  (" + p.n + (p.n > 1 ? " nights)" : " night)"), M + 560, 420, { s: 20 });
+  txt(g, b.adults + (b.adults > 1 ? " adults" : " adult") + (b.children ? " · " + b.children + (b.children > 1 ? " children" : " child") + " (below 12, free)" : ""), M + 560, 450, { s: 20 });
+  txt(g, "Booking: " + b.code, M + 560, 484, { s: 19, c: "#33414F" });
+  // table
+  let y = 580;
+  const cols = [M, M + 560, M + 720, M + 860];
+  g.fillStyle = "#0F1E2E"; g.fillRect(M, y + 14, 1080, 2);
+  txt(g, "Description", cols[0], y, { w: 700, s: 20 }); txt(g, "SAC", cols[1], y, { w: 700, s: 20 }); txt(g, "Qty", cols[2], y, { w: 700, s: 20 }); txt(g, "Taxable value", 1160, y, { w: 700, s: 20, a: "right" });
+  y += 56;
+  const line = (d, q, v) => { txt(g, d, cols[0], y, { s: 21 }); txt(g, S.sac, cols[1], y, { s: 21 }); txt(g, q, cols[2], y, { s: 21 }); txt(g, inr2(v), 1160, y, { s: 21, a: "right" }); g.fillStyle = "#EEF1F4"; g.fillRect(M, y + 18, 1080, 1); y += 52; };
+  line("Room rent, " + ty.en + " " + (b.ac ? "AC" : "Non-AC") + " @ " + inr(p.rate) + "/night incl. GST", p.n + (p.n > 1 ? " nights" : " night"), p.roomTaxable);
+  if (b.beds) line("Extra bed @ " + inr(S.extraBed) + "/night incl. GST", b.beds + " × " + p.n, p.bedTaxable);
+  y += 6;
+  const tr = (l, v, o) => { txt(g, l, cols[1], y, o || { s: 21, c: "#33414F" }); txt(g, v, 1160, y, Object.assign({ a: "right" }, o || { s: 21 })); y += 42; };
+  tr("Total taxable value", inr2(p.taxable));
+  tr("CGST @ 2.5%", inr2(p.cgst));
+  tr("SGST @ 2.5%", inr2(p.sgst));
+  g.fillStyle = "#0F1E2E"; g.fillRect(cols[1], y - 22, 1160 - cols[1], 2); y += 18;
+  tr("Total (incl. GST)", inr2(p.total), { w: 800, s: 28 });
+  y += 10;
+  y = wrap(g, "Amount in words: Rupees " + words(p.total) + " only.", M, y, 1080, 30, { s: 20, c: "#33414F" });
+  txt(g, "Payment: Received in full by UPI · UTR " + b.utr + " · Receipt " + b.receipt_no, M, y + 6, { s: 20, c: "#33414F" });
+  y += 60;
+  g.fillStyle = "#E6E9EE"; g.fillRect(M, y, 1080, 2); y += 40;
+  y = wrap(g, "Check-in any time, 24 hours. Please bring a valid photo ID for every adult. No smoking. No pets.", M, y, 700, 28, { s: 18, c: "#5B6878" });
+  txt(g, "For " + B.name, 1160, 1560, { w: 700, s: 22, a: "right" });
+  txt(g, "Authorised signatory", 1160, 1596, { s: 18, c: "#5B6878", a: "right" });
+  txt(g, "This is a computer-generated invoice and does not need a signature.", M, 1660, { s: 17, c: "#8A95A3" });
+  return c;
+}
+function drawReceipt(b){
+  const [c, g] = makeCanvas(), M = 80;
+  const paid = new Date(b.paid_at);
+  header(g, "PAYMENT RECEIPT", "Receipt No: " + b.receipt_no, paid.toLocaleString("en-IN", { day: "2-digit", month: "short", year: "numeric", hour: "numeric", minute: "2-digit" }));
+  g.strokeStyle = "#16A34A"; g.lineWidth = 3; g.setLineDash([12, 8]); g.strokeRect(M + 240, 330, 600, 200); g.setLineDash([]);
+  txt(g, "Amount received", 620, 385, { s: 22, c: "#5B6878", a: "center" });
+  txt(g, inr2(b.total), 620, 455, { w: 800, s: 56, a: "center" });
+  txt(g, "PAID", 620, 505, { w: 800, s: 24, c: "#16A34A", a: "center" });
+  let y = 610;
+  const ty = S.types[S.typeOf(b.room)];
+  const row = (k, v) => { txt(g, k, M, y, { s: 22, c: "#5B6878" }); txt(g, v, 1160, y, { w: 700, s: 22, a: "right" }); g.fillStyle = "#EEF1F4"; g.fillRect(M, y + 20, 1080, 1); y += 62; };
+  row("Received from", b.guest.name);
+  row("Mobile", "+91 " + b.guest.phone);
+  row("Payment mode", "UPI");
+  row("Paid to (UPI ID)", S.upiId);
+  row("UPI transaction (UTR)", b.utr);
+  row("Against invoice", b.invoice_no);
+  row("Booking", b.code + " · Room " + b.room + " · " + ty.en + " " + (b.ac ? "AC" : "Non-AC"));
+  row("Stay", fmtDen(b.din) + " → " + fmtDen(b.dout));
+  y += 20;
+  wrap(g, "Show this receipt and a photo ID at the reception. Check-in any time, 24 hours. For help, WhatsApp " + B.phone + ".", M, y, 1080, 30, { s: 20, c: "#33414F" });
+  txt(g, "For " + B.name, 1160, 1560, { w: 700, s: 22, a: "right" });
+  txt(g, "This is a computer-generated receipt.", M, 1660, { s: 17, c: "#8A95A3" });
+  return c;
+}
+function jpegPdf(canvas){
+  const data = atob(canvas.toDataURL("image/jpeg", 0.92).split(",")[1]);
+  const W = 595.28, H = 841.89, enc = new TextEncoder();
+  const content = `q ${W} 0 0 ${H} 0 0 cm /Im0 Do Q`;
+  const objs = [
+    "<< /Type /Catalog /Pages 2 0 R >>",
+    "<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
+    `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${W} ${H}] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>`,
+    null,
+    `<< /Length ${content.length} >>\nstream\n${content}\nendstream`
+  ];
+  const parts = [], offs = []; let len = 0;
+  const push = s => { const u = typeof s === "string" ? enc.encode(s) : s; parts.push(u); len += u.length; };
+  push("%PDF-1.4\n%\xE2\xE3\xCF\xD3\n");
+  objs.forEach((o, i) => {
+    offs.push(len);
+    if (i === 3){
+      const img = new Uint8Array(data.length); for (let k = 0; k < data.length; k++) img[k] = data.charCodeAt(k);
+      push(`4 0 obj\n<< /Type /XObject /Subtype /Image /Width ${canvas.width} /Height ${canvas.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${img.length} >>\nstream\n`);
+      push(img); push("\nendstream\nendobj\n");
+    } else push(`${i + 1} 0 obj\n${o}\nendobj\n`);
+  });
+  const xref = len;
+  push(`xref\n0 ${objs.length + 1}\n0000000000 65535 f \n` + offs.map(o => String(o).padStart(10, "0") + " 00000 n \n").join("") + `trailer\n<< /Size ${objs.length + 1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`);
+  return new Blob(parts, { type: "application/pdf" });
+}
+function renderDocs(){
+  const b = st.booking;
+  return (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => logoImg.complete ? 0 : new Promise(r => { logoImg.onload = logoImg.onerror = r; })).then(() => {
+    const ci = drawInvoice(b), cr = drawReceipt(b);
+    $("img-inv").src = ci.toDataURL("image/jpeg", 0.85);
+    $("img-rcp").src = cr.toDataURL("image/jpeg", 0.85);
+    const safe = s => s.replace(/[^\w-]+/g, "-");
+    st.files = {
+      inv: new File([jpegPdf(ci)], "Invoice-" + safe(b.invoice_no) + ".pdf", { type: "application/pdf" }),
+      rcp: new File([jpegPdf(cr)], "Receipt-" + safe(b.receipt_no) + ".pdf", { type: "application/pdf" })
+    };
+  });
+}
+function download(file){
+  const a = document.createElement("a"); a.href = URL.createObjectURL(file); a.download = file.name;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+}
+function waText(){
+  const b = st.booking;
+  return [
+    "Sri Ambalavanar Cottage, Mayiladuthurai",
+    "Booking " + b.code + " is CONFIRMED.",
+    "Room " + b.room + " · " + S.types[S.typeOf(b.room)].en + " " + (b.ac ? "AC" : "Non-AC"),
+    "Check-in: " + fmtDen(b.din) + " · Check-out: " + fmtDen(b.dout),
+    "Guest: " + b.guest.name,
+    "Paid: " + inr(b.total) + " by UPI (UTR " + b.utr + ")",
+    "Invoice: " + b.invoice_no,
+    "Address: Door No. 17, Mayuranathar Sannathi Street, Mayiladuthurai 609 001",
+    "Map: https://maps.google.com/?q=Sri+Ambalavanar+Cottage+Mayiladuthurai"
+  ].join("\n");
+}
+$("b-inv").addEventListener("click", () => st.files && download(st.files.inv));
+$("b-rcp").addEventListener("click", () => st.files && download(st.files.rcp));
+$("b-wa").addEventListener("click", () => {
+  if (!st.files) { toast(t("preparing")); return; }
+  const files = [st.files.inv, st.files.rcp];
+  if (navigator.canShare && navigator.canShare({ files })){
+    navigator.share({ files, text: waText(), title: "Booking " + st.booking.code }).catch(() => {});
+  } else {
+    download(st.files.inv); setTimeout(() => download(st.files.rcp), 600);
+    toast(t("waDesk"));
+    window.open("https://wa.me/?text=" + encodeURIComponent(waText()), "_blank", "noopener");
+  }
+});
+$("b-cottage").addEventListener("click", () => {
+  const b = st.booking;
+  const msg = "New website booking (please verify UTR)\n" + waText() + "\nMobile: +91 " + b.guest.phone + "\nEmail: " + b.guest.email + "\nGuests: " + b.adults + " adults, " + b.children + " children, extra bed " + b.beds + "\nArrival: " + b.guest.arrival;
+  window.open("https://wa.me/" + B.whatsapp + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+});
+
+
+/* start */
+applyLang(LANG);
+setStep(1);
+loadStatus();
+})();
+</script>
+</body>
+</html>
