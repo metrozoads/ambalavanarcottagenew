@@ -79,8 +79,25 @@ html[lang="ta"] .title h1{font-size:clamp(22px,3vw,28px);line-height:1.35}
 @media (max-width:520px){.dates{grid-template-columns:repeat(2,minmax(0,1fr))}.nights{grid-column:span 2}}
 
 /* floor plan */
-.floors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
-@media (max-width:1100px){.floors{grid-template-columns:minmax(0,1fr)}}
+.floors{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.bp{min-width:620px;border:3px solid var(--navy);border-radius:8px;background:#F8FAFB;display:flex;flex-direction:column;position:relative}
+.prow{display:grid;gap:0}
+.prow>*{border-radius:0;border-width:0;border-right:2px solid #CBD3DC}
+.prow>*:last-child{border-right:0}
+.prow.back{border-bottom:2px solid #CBD3DC}
+.prow.front{border-top:2px solid #CBD3DC}
+.corr2{height:46px;display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:.35em;color:#8A95A3;font-weight:700;position:relative;background:repeating-linear-gradient(90deg,transparent 0 18px,#EEF1F4 18px 20px)}
+.ent{position:absolute;left:-3px;top:50%;transform:translate(-100%,-50%);background:#B45309;color:#fff;font-size:11px;font-weight:800;letter-spacing:.04em;padding:6px 8px;border-radius:8px 0 0 8px;white-space:nowrap}
+.bp{margin-left:92px}
+@media (max-width:700px){.bp{min-width:560px;margin-left:78px}.ent{font-size:10px;padding:5px 6px}}
+.cell{height:74px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:11px;font-weight:700;line-height:1.2;padding:4px;color:#475569;background:#EEF1F4;min-width:0}
+.cell.stairs{background:repeating-linear-gradient(90deg,#fff 0 7px,#D9E0E8 7px 9px);color:#334155}
+.cell.rec{background:var(--navy);color:#fff}
+.cell.hk,.cell.shop{background:#E7E3DA;color:#6B5E4B}
+.cell small{font-weight:600;font-size:10px;opacity:.85}
+.swipe{display:none;font-size:12px;color:var(--muted)}
+@media (max-width:700px){.swipe{display:block}}
 .floor{padding:16px;display:flex;flex-direction:column;gap:10px}
 .floor-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
 .floor-h h2{font-size:18px;font-weight:800}
@@ -97,13 +114,13 @@ html[lang="ta"] .title h1{font-size:clamp(22px,3vw,28px);line-height:1.35}
 .door{align-self:center;color:#fff;font-size:12px;font-weight:700;padding:5px 14px;border-radius:0 0 10px 10px;margin-top:-13px}
 .endrow{display:flex;justify-content:center}
 .endrow .room{width:60%}
-.room{height:64px;border-radius:10px;border:2px solid var(--free-b);background:var(--free);color:var(--free-i);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;padding:2px;min-width:0;line-height:1.15}
+.room{height:74px;border-radius:0;border:0;box-shadow:inset 0 0 0 2px var(--free-b);background:var(--free);color:var(--free-i);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;padding:2px;min-width:0;line-height:1.15}
 .room b{font-size:16px;line-height:1.1}
 .room small{font-size:11px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
-.room:hover{box-shadow:0 0 0 3px rgba(52,211,153,.35)}
-.room.sel{background:var(--teal);border-color:var(--teal);color:#fff}
-.room.booked{border-style:dashed;border-color:#CBD3DC;background:repeating-linear-gradient(45deg,#EEF1F4 0 8px,#F7F8FA 8px 16px);color:#8A95A3;cursor:not-allowed;box-shadow:none}
-.room.hold{border-color:var(--hold-b);background:var(--hold);color:var(--hold-i);cursor:not-allowed;box-shadow:none}
+.room:hover{box-shadow:inset 0 0 0 4px var(--free-b)}
+.room.sel{background:var(--teal);box-shadow:inset 0 0 0 2px var(--teal);color:#fff}
+.room.booked{box-shadow:none;background:repeating-linear-gradient(45deg,#EEF1F4 0 8px,#F7F8FA 8px 16px);color:#8A95A3;cursor:not-allowed;box-shadow:none}
+.room.hold{box-shadow:inset 0 0 0 2px var(--hold-b);background:var(--hold);color:var(--hold-i);cursor:not-allowed}
 .room.loading{opacity:.5}
 .legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;font-weight:600;padding:12px 14px;margin-bottom:16px}
 .legend span{display:flex;align-items:center;gap:6px}
@@ -332,7 +349,7 @@ const W = {
     h1:"Choose your room", p1:"Pick a green room on the floor plan. Grey rooms are booked; orange rooms are being paid for by another guest right now.",
     checkin:"Check-in", checkout:"Check-out", night:"night", nights:"nights",
     lgFree:"Free", lgSel:"Your choice", lgHold:"On hold (someone is paying)", lgBooked:"Booked",
-    left:"LEFT", right:"RIGHT", corridor:"CORRIDOR", stairs:"STAIRS", reception:"RECEPTION", stairsUp:"STAIRS FROM RECEPTION", entrance:"▲ ENTRANCE", upStairs:"Up the stairs from reception", endCorr:"End of corridor",
+    left:"LEFT", right:"RIGHT", corridor:"CORRIDOR", stairs:"STAIRS", reception:"RECEPTION", stairsUp:"STAIRS FROM RECEPTION", entrance:"ENTRANCE ▶", hk:"Housekeeping", shop:"Photo shop", swipe:"Swipe sideways to see all rooms →", upStairs:"Up the stairs from reception", endCorr:"End of corridor",
     free:"free", of:"of", from:"from", selected:"selected", booked:"Booked", onhold:"On hold",
     pickRoom:"Tap a green room", pickRoomP:"Your room, price and GST appear here.",
     floor_G:"Ground floor", floor_F:"First floor", side_L:"left side", side_R:"right side", side_E:"end of corridor",
@@ -376,7 +393,7 @@ const W = {
     h1:"உங்கள் அறையைத் தேர்ந்தெடுங்கள்", p1:"தள வரைபடத்தில் பச்சை அறையைத் தொடுங்கள். சாம்பல் = முன்பதிவானது; ஆரஞ்சு = வேறொருவர் இப்போது பணம் செலுத்துகிறார்.",
     checkin:"வருகை தேதி", checkout:"புறப்படும் தேதி", night:"இரவு", nights:"இரவுகள்",
     lgFree:"காலி", lgSel:"உங்கள் தேர்வு", lgHold:"பிடிப்பில் (பணம் செலுத்துகிறார்)", lgBooked:"முன்பதிவானது",
-    left:"இடது", right:"வலது", corridor:"நடைபாதை", stairs:"படிக்கட்டு", reception:"வரவேற்பு", stairsUp:"வரவேற்பிலிருந்து படிக்கட்டு", entrance:"▲ நுழைவு", upStairs:"வரவேற்பிலிருந்து மாடிக்கு", endCorr:"நடைபாதை முடிவில்",
+    left:"இடது", right:"வலது", corridor:"நடைபாதை", stairs:"படிக்கட்டு", reception:"வரவேற்பு", stairsUp:"வரவேற்பிலிருந்து படிக்கட்டு", entrance:"நுழைவு ▶", hk:"வீட்டுப் பராமரிப்பு", shop:"போட்டோ கடை", swipe:"எல்லா அறைகளையும் பார்க்க பக்கவாட்டில் தள்ளுங்கள் →", upStairs:"வரவேற்பிலிருந்து மாடிக்கு", endCorr:"நடைபாதை முடிவில்",
     free:"காலி", of:"/", from:"முதல்", selected:"தேர்வு", booked:"முன்பதிவானது", onhold:"பிடிப்பில்",
     pickRoom:"பச்சை அறையைத் தொடுங்கள்", pickRoomP:"உங்கள் அறை, கட்டணம், GST இங்கே வரும்.",
     floor_G:"தரைத் தளம்", floor_F:"முதல் தளம்", side_L:"இடது பக்கம்", side_R:"வலது பக்கம்", side_E:"நடைபாதை முடிவில்",
@@ -450,9 +467,7 @@ function price(){
 }
 function roomInfo(no){
   for (const f of S.floors){
-    if (f.left.includes(no)) return { floor: f.id, side: "L" };
-    if (f.right.includes(no)) return { floor: f.id, side: "R" };
-    if (f.end.includes(no)) return { floor: f.id, side: "E" };
+    if (f.back.includes(no) || f.front.includes(no)) return { floor: f.id };
   }
   return { floor: "G", side: "L" };
 }
@@ -539,20 +554,22 @@ function roomBtn(no){
   return `<button type="button" class="room ${cls} ${st.loading ? "loading" : ""}" data-room="${no}" ${dis} aria-pressed="${no === st.room}" aria-label="${t("room")} ${no}, ${esc(ty[LANG])}, ${esc(label)}"><b>${no}</b><small>${esc(ty[LANG])}</small><small>${esc(label)}</small></button>`;
 }
 function renderFloors(){
+  const cell = c => S.isRoom(c) ? roomBtn(c)
+    : c === "STAIRS" ? `<div class="cell stairs">${t("stairs")}</div>`
+    : c === "REC" ? `<div class="cell rec">${t("reception")}</div>`
+    : c === "HK" ? `<div class="cell hk">${t("hk")}<small>G11</small></div>`
+    : `<div class="cell shop">${t("shop")}</div>`;
+  const row = (cells, cls) => `<div class="prow ${cls}" style="grid-template-columns:repeat(${cells.length},minmax(0,1fr))">${cells.map(cell).join("")}</div>`;
   $("floors").innerHTML = S.floors.map(f => {
-    const all = f.end.concat(f.left, f.right), free = all.filter(r => !st.status[r]).length;
-    const isG = f.id === S.floors[0].id;
+    const all = f.back.concat(f.front).filter(S.isRoom), free = all.filter(r => !st.status[r]).length;
     return `<section class="card floor">
       <div class="floor-h"><h2>${esc(f[LANG])} <span>${esc(firstLast(all))}</span></h2><span>${st.loading ? t("loading") : free + " " + t("of") + " " + all.length + " " + t("free")}</span></div>
-      <div class="plan">
-        ${f.end.length ? `<div class="endrow">${f.end.map(roomBtn).join("")}</div>` : ""}
-        <div class="cols">
-          <div class="col"><span class="col-h">${t("left")}</span>${f.left.map(roomBtn).join("")}</div>
-          <div class="col"><span class="col-h"></span><div class="corr"><span>${t("corridor")}</span></div><div class="fix stairs">${t("stairs")}</div>${isG ? `<div class="fix rec">${t("reception")}</div>` : `<div class="fix stairs" style="background:#E2E8F0">${t("stairsUp")}</div>`}</div>
-          <div class="col"><span class="col-h">${t("right")}</span>${f.right.map(roomBtn).join("")}</div>
-        </div>
-      </div>
-      <span class="door" style="background:${isG ? "#B45309" : "#64748B"}">${isG ? t("entrance") : t("upStairs")}</span>
+      <div class="scroll"><div class="bp ${f.entrance ? "has-ent" : ""}">
+        ${row(f.back, "back")}
+        <div class="corr2">${t("corridor")}${f.entrance ? `<span class="ent">${t("entrance")}</span>` : ""}</div>
+        ${row(f.front, "front")}
+      </div></div>
+      <span class="swipe">${t("swipe")}</span>
     </section>`;
   }).join("");
 }
@@ -564,7 +581,7 @@ function summaryCard(withSeg){
   return `<div class="card sum">
     <img src="${ty.photo}" alt="">
     <div class="sum-b">
-      <div class="row" style="align-items:baseline"><h3>${t("room")} ${st.room}</h3><span>${t("floor_" + ri.floor)} · ${t("side_" + ri.side)}</span></div>
+      <div class="row" style="align-items:baseline"><h3>${t("room")} ${st.room}</h3><span>${t("floor_" + ri.floor)}</span></div>
       <span style="color:#33414F;font-size:14px">${ty[LANG]} · ${esc(ty.beds[LANG])} · ${ty.kit}-${t("kit")}</span>
       ${withSeg ? `<div class="seg" role="group" aria-label="AC / Non-AC"><button type="button" data-ac="1" aria-pressed="${st.ac}">${t("ac")} · ${inr(ty.ac)}</button><button type="button" data-ac="0" aria-pressed="${!st.ac}">${t("nonac")} · ${inr(ty.nonac)}</button></div>` : `<span style="font-weight:700">${st.ac ? t("ac") : t("nonac")}</span>`}
       <div class="hr"></div>
