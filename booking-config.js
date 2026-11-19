@@ -3,12 +3,13 @@
    Edit only this file to change rates, rooms, UPI or the database link.
    ===================================================================== */
 window.SAC = {
-  /* --- Live vacancy + room lock (Supabase) ---------------------------
-     Leave both empty = DEMO MODE: booking works, but the room lock is kept
+  /* --- Live vacancy + room lock (your web app server) ---------------
+     Leave empty = DEMO MODE: booking works, but the room lock is kept
      only in the guest's own browser and the cottage does not see it.
-     Fill both after running supabase-setup.sql (see SETUP-BOOKING.txt). */
-  supabaseUrl: "",          // e.g. "https://abcdxyz.supabase.co"
-  supabaseKey: "",          // the "anon public" key from Supabase > Project Settings > API
+     Put the address of the web app server here (no / at the end), e.g.
+     "https://app.sriambalavanarcottage.in"  or  "http://localhost:3000"
+     The server's .env must list this website in ALLOWED_ORIGINS. */
+  apiUrl: "https://ambalavanarcottageapp.onrender.com",
 
   /* --- Payment ------------------------------------------------------- */
   upiId: "metrotamilchannel-3@okicici",
@@ -63,17 +64,16 @@ window.SAC.allRooms = function () {
   return window.SAC.floors.flatMap(function (f) { return f.back.concat(f.front); }).filter(window.SAC.isRoom);
 };
 
-/* Small client for the Supabase database functions (no library needed). */
-window.SAC.live = function () { return !!(window.SAC.supabaseUrl && window.SAC.supabaseKey); };
+/* Small client for the web app server's booking API (no library needed). */
+window.SAC.live = function () { return !!window.SAC.apiUrl; };
 window.SAC.rpc = function (fn, args) {
-  var s = window.SAC;
-  return fetch(s.supabaseUrl.replace(/\/$/, "") + "/rest/v1/rpc/" + fn, {
+  return fetch(window.SAC.apiUrl.replace(/\/$/, "") + "/api/public/" + fn, {
     method: "POST",
-    headers: { "Content-Type": "application/json", apikey: s.supabaseKey, Authorization: "Bearer " + s.supabaseKey },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(args || {})
   }).then(function (r) {
     return r.json().catch(function () { return null; }).then(function (j) {
-      if (!r.ok) { var e = new Error((j && (j.message || j.hint)) || ("HTTP " + r.status)); e.code = j && j.message; throw e; }
+      if (!r.ok) { var e = new Error((j && j.message) || ("HTTP " + r.status)); e.code = (j && j.error) || ""; throw e; }
       return j;
     });
   });
