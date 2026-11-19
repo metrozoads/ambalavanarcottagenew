@@ -41,19 +41,26 @@ window.SAC = {
   maxExtraBeds: 1,
   childFreeBelow: 12,
 
-  /* --- Floor plan ------------------------------------------------------
-     Rooms are drawn top to bottom; the entrance is at the bottom.
-     Change left/right lists if the real building is different. */
+  /* --- Floor plan (from the cottage blueprint) ------------------------
+     Each floor = back row, corridor, front row, drawn left to right.
+     The main entrance is at the LEFT end of the ground-floor corridor.
+     Special boxes (not bookable): SHOP = photo shop, HK = housekeeping
+     room (G11), STAIRS = steps, REC = reception. */
   floors: [
-    { id: "G", en: "Ground floor", ta: "தரைத் தளம்", left: ["G5","G4","G3","G2","G1"], right: ["G6","G7","G8","G9","G10"], end: [] },
-    { id: "F", en: "First floor",  ta: "முதல் தளம்", left: ["F6","F5","F4","F3","F2","F1"], right: ["F7","F8","F9","F10","F11","F12"], end: ["F13"] }
+    { id: "G", en: "Ground floor", ta: "தரைத் தளம்", entrance: true,
+      back:  ["SHOP","HK","G10","G9","STAIRS","G8","G7","G6"],
+      front: ["REC","G1","G2","G3","G4","G5"] },
+    { id: "F", en: "First floor",  ta: "முதல் தளம்", entrance: false,
+      back:  ["F13","F12","F11","F10","STAIRS","F9","F8","F7"],
+      front: ["F1","F2","F3","F4","F5","F6"] }
   ],
   roomType: { G1: "T", F1: "T", F13: "S" }   // every other room is Double ("D")
 };
 
+window.SAC.isRoom = function (c) { return /^[A-Z]\d+$/.test(c); };
 window.SAC.typeOf = function (room) { return window.SAC.roomType[room] || "D"; };
 window.SAC.allRooms = function () {
-  return window.SAC.floors.flatMap(function (f) { return f.end.concat(f.left, f.right); });
+  return window.SAC.floors.flatMap(function (f) { return f.back.concat(f.front); }).filter(window.SAC.isRoom);
 };
 
 /* Small client for the Supabase database functions (no library needed). */
