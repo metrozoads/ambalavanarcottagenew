@@ -511,8 +511,8 @@ const CONFIG = {
   googleRating: "5.0",     // update when reviews change
   googleReviewCount: 1
 };
-const KIT2 = { en: ["2 bedsheets","2 pillow covers","2 bath towels","2 soaps","1 water bottles"], ta: ["2 படுக்கை விரிப்புகள்","2 தலையணை உறைகள்","2 குளியல் துண்டுகள்","2 சோப்புகள்","1 தண்ணீர் பாட்டில்கள்"] };
-const KIT3 = { en: ["3 bedsheets","3 pillow covers","3 bath towels","3 soaps","1 water bottles"], ta: ["3 படுக்கை விரிப்புகள்","3 தலையணை உறைகள்","3 குளியல் துண்டுகள்","3 சோப்புகள்","1 தண்ணீர் பாட்டில்கள்"] };
+const KIT2 = { en: ["2 bedsheets","2 pillow covers","2 bath towels","2 soaps","2 water bottles"], ta: ["2 படுக்கை விரிப்புகள்","2 தலையணை உறைகள்","2 குளியல் துண்டுகள்","2 சோப்புகள்","2 தண்ணீர் பாட்டில்கள்"] };
+const KIT3 = { en: ["3 bedsheets","3 pillow covers","3 bath towels","3 soaps","3 water bottles"], ta: ["3 படுக்கை விரிப்புகள்","3 தலையணை உறைகள்","3 குளியல் துண்டுகள்","3 சோப்புகள்","3 தண்ணீர் பாட்டில்கள்"] };
 const KIT1 = { en: ["1 bedsheet","1 pillow cover","1 bath towel","1 soap","1 water bottle"], ta: ["1 படுக்கை விரிப்பு","1 தலையணை உறை","1 குளியல் துண்டு","1 சோப்பு","1 தண்ணீர் பாட்டில்"] };
 // Rates come from booking-config.js (one place for website + booking page).
 const RT = window.SAC.types, R = n => "₹" + n.toLocaleString("en-IN");
@@ -765,8 +765,8 @@ const iso = d => new Date(d.getTime() - d.getTimezoneOffset() * 6e4).toISOString
 const today = new Date(); today.setHours(0, 0, 0, 0);
 const plus = n => { const d = new Date(today); d.setDate(d.getDate() + n); return d; };
 ["s-in", "s-out", "e-in", "e-out"].forEach(id => $(id).min = iso(today));
-$("s-in").value = $("e-in").value = iso(plus(1));
-$("s-out").value = $("e-out").value = iso(plus(2));
+$("s-in").value = $("e-in").value = iso(plus(0));
+$("s-out").value = $("e-out").value = iso(plus(1));
 
 /* hero search -> booking page */
 $("search").addEventListener("submit", e => {
