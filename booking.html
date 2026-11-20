@@ -450,7 +450,7 @@ const fmtDen = s => new Date(s + "T00:00:00").toLocaleDateString("en-IN", { day:
 const today = iso(new Date());
 const qs = new URLSearchParams(location.search);
 const st = {
-  step: 1, din: qs.get("in") >= today ? qs.get("in") : addDays(today, 1), dout: null,
+  step: 1, din: qs.get("in") >= today ? qs.get("in") : today, dout: null,
   wantType: qs.get("type") || "", room: null, ac: qs.get("ac") !== "0", status: {}, loading: false,
   hold: null, adults: 2, children: 0, beds: 0, booking: null, files: null
 };
@@ -472,7 +472,7 @@ function roomInfo(no){
   return { floor: "G", side: "L" };
 }
 
-/* ---------- data layer: live (Supabase) or demo (this browser) ---------- */
+/* ---------- data layer: live (web app server) or demo (this browser) ---------- */
 const DEMO_KEY = "sac-demo-bookings";
 const demoAll = () => { try { return JSON.parse(localStorage.getItem(DEMO_KEY) || "[]"); } catch (e) { return []; } };
 const demoSave = a => { try { localStorage.setItem(DEMO_KEY, JSON.stringify(a)); } catch (e) {} };
